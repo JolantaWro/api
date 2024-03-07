@@ -18,6 +18,9 @@ app.get('/', (req, res) => {
     res.send('Server is ruuning')
 });
 
+app.use("/auth", require("./routes/auth"));
+
+
 
 
 app.get("/products", async (req, res) => {
