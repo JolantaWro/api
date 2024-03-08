@@ -6,7 +6,7 @@ const jwtGenerator = require("../utils/generator");
 const authorization = require("../middleware/authorization");
 const { request } = require("express");
 
-//registering
+
 router.post("/register", validInfo, async (req, res) => {
     try {
         const { email, first_name, last_name, password } = req.body;
@@ -44,7 +44,6 @@ router.post("/login", validInfo, async (req, res) => {
         if (user.rows.length === 0) {
             return res.status(401).json("Password or Email is incorrect");
         }
-
         const validPassword = await bcrypt.compare(password, user.rows[0].password)
         if (!validPassword) {
             return res.status(401).json("Password or Email is incorrec");
