@@ -34,6 +34,17 @@ app.get("/products", async (req, res) => {
     }
 });
 
+app.get("/prod", async (req, res) => {
+    try {
+        const products = await pool.query("SELECT * FROM assortment;")
+        console.log(products.rows)
+        res.json(products.rows)
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server error:", err.message);
+    }
+});
+
 app.get("/users", async (req, res) => {
     try {
         const users = await pool.query("SELECT * FROM users;")
