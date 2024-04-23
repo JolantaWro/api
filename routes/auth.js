@@ -4,7 +4,7 @@ const pool = require("../db")
 const validInfo = require("../middleware/validInfo");
 const jwtGenerator = require("../utils/generator");
 const authorization = require("../middleware/authorization");
-const { request } = require("express");
+
 const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
