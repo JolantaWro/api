@@ -11,15 +11,15 @@ app.use(express.json()); //req.body
 
 
 
-// app.get('/', (req, res) => {
-//     res.send('Server is ruuning')
-// });
+app.get('/', (req, res) => {
+    res.send('Server is ruuning')
+});
 
 app.use("/auth", require("./routes/auth"));
 
 
 
-app.get('/', async (req, res) => {
+app.get('/products', async (req, res) => {
     try {
         const products = await prisma.product.findMany();
         res.json(products);
