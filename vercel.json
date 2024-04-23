@@ -5,7 +5,7 @@
         "src": "./index.js",
         "use": "@vercel/node",
         "config": {
-          "prisma": "./prisma"
+          "prisma": "/prisma"
         }
       }
     ],
