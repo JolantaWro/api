@@ -1,11 +1,11 @@
-const express = require("express");
-const { PrismaClient } = require('@prisma/client');
-
 const prisma = new PrismaClient();
 const app = express();
 const cors = require("cors");
 require('dotenv').config()
-const pool = require("./db")
+// const express = require("express");
+// const { PrismaClient } = require('@prisma/client');
+
+// const pool = require("./db")
 
 //middleware
 app.use(cors());
@@ -50,10 +50,15 @@ app.use("/auth", require("./routes/auth"));
 //     res.status(201).json(newUser);
 //   });
 
-  app.get('/products', async (req, res) => {
-    const products = await prisma.product.findMany();
-    res.json(products);
-  });
+app.get('/products', async (req, res) => {
+    try {
+        const products = await prisma.product.findMany();
+        res.json(products);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Server error");
+    }
+});
 
 app.listen(5000, () => {
     console.log(`Server is starting on port 5000`);
