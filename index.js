@@ -24,8 +24,8 @@ app.get('/products', async (req, res) => {
         const products = await prisma.product.findMany();
         res.json(products);
     } catch (error) {
-        console.error(error);
-        res.status(500).send("Server error");
+        console.error("Error fetching products:", error);
+        res.status(500).json({ error: "Server error" });
     }
 });
 
