@@ -13,9 +13,9 @@ app.use(express.json()); //req.body
 
 
 
-app.get('/', (req, res) => {
-    res.send('Server is ruuning')
-});
+// app.get('/', (req, res) => {
+//     res.send('Server is ruuning')
+// });
 
 app.use("/auth", require("./routes/auth"));
 
@@ -50,7 +50,7 @@ app.use("/auth", require("./routes/auth"));
 //     res.status(201).json(newUser);
 //   });
 
-  app.get('/products', async (req, res) => {
+  app.get('/', async (req, res) => {
     const products = await prisma.product.findMany();
     res.json(products);
   });
